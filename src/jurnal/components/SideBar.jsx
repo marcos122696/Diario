@@ -1,19 +1,20 @@
 import { Box, Drawer, Toolbar, Typography, Divider, Grid, List, ListItem, ListItemText, ListItemButton, ListItemIcon } from "@mui/material";
 import { TurnedInNot } from "@mui/icons-material";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useEffect } from "react";
 
 
 
 export const SideBar = ({ drowerWidth = 240 }) => {
     
-    
+    const { displayName } = useSelector( state => state.auth );
     const resolution = window.screen.width;
 
   return (
     <Box
         component="nav"
-        sx={{
-            width: { sm: drowerWidth, flexShrink: { sm: 0 } },
-        }}
+        sx={{ width: { sm: drowerWidth, flexShrink: { sm: 0 }, }, }}
     >
         <Drawer
             variant={ resolution > 600 ? "permanent" : "temporary" } 
@@ -40,7 +41,8 @@ export const SideBar = ({ drowerWidth = 240 }) => {
                     component="div"
                     color="white"
                 >
-                    Marcos Gomez</Typography>
+                    { displayName }
+                </Typography>
 
             </Toolbar>
             <Divider sx={{ backgroundColor:'primary.main' }}/>
