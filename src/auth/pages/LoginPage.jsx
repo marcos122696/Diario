@@ -23,7 +23,9 @@ export const LoginPage = () => {
 
   return (
     <AuthLayout title="Login">
-            <form onSubmit={ onSubmit }>
+            <form onSubmit={ onSubmit }
+                className={ !!errorMessage ? "animate__animated animate__shakeX" : "" }
+            >
                 <Grid container>
                     <Grid item xs={ 12 } sx={{ mt: 2 }} >
                         <TextField 

@@ -1,4 +1,9 @@
-import { loginWhitEmailPassword, registerUserWithEmailPassword, signInWithGoogle } from "../../firebase/providers";
+import { 
+    loginWhitEmailPassword, 
+    logoutFirebase, 
+    registerUserWithEmailPassword, 
+    signInWithGoogle 
+} from "../../firebase/providers";
 import { chackingCredentials, login, logout } from "./authSlice";
 
 
@@ -46,6 +51,12 @@ export const startLoginWithEmailPassword = ({ email, password }) => {
     }
 };
 
+export const startLogout = () => {
+    return async( dispatch ) => {
+        await logoutFirebase();
+        dispatch( logout({ errorMessage: null }) );
+    }
+};
 
 //--------------------------MANTENIMIENTO--------------------------------------------------
 export const startFacebookSignIn = () => {

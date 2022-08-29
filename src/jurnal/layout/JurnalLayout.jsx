@@ -6,6 +6,7 @@ const drowerWidth = 280;
 export const JurnalLayout = ({ children }) => {
   return (
         <Box 
+            className="animate__animated animate__fadeIn"
             sx={{ 
                 display: 'flex', 
                 backgroundColor: '#333',

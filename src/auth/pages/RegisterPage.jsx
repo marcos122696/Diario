@@ -42,7 +42,9 @@ export const RegisterPage = () => {
 
   return (
     <AuthLayout title="Crear Cuenta">
-            <form onSubmit={ onSubmit }>
+            <form onSubmit={ onSubmit }
+                className={ !!errorMessage ? "animate__animated animate__shakeX" : "" }
+            >
                 <Grid container>
                     <Grid item xs={ 12 } sx={{ mt: 2 }}>
                         <TextField 
