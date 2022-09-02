@@ -4,6 +4,7 @@
 export * from './components/ImageGallery';
 export * from './components/NavBar';
 export * from './components/SideBar';
+export * from './components/SideBarItem';
 
 export * from './layout/JurnalLayout';
 

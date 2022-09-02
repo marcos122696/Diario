@@ -9,7 +9,7 @@ export const JurnalLayout = ({ children }) => {
             className="animate__animated animate__fadeIn"
             sx={{ 
                 display: 'flex', 
-                backgroundColor: '#333',
+                backgroundColor: 'dark.main',
                 color: 'white',
             }}
         >

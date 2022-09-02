@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
 
 import { FirebaseAuth } from '../firebase/config';
-import { login, logout } from '../store/index';
+import { login, logout, startLoadingNotes } from '../store/index';
 
 
 export const useCheckAuth = () => {
@@ -16,6 +16,7 @@ export const useCheckAuth = () => {
             if ( !user ) return dispatch( logout( {errorMessage: null} ) );
 
             dispatch( login( user ) );
+            dispatch( startLoadingNotes() );
         } );
     }, [])
 

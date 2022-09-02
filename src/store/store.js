@@ -1,5 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { authSlice } from './index';
+import { jurnalSlice } from './jurnal/jurnalSlice';
 
 export const store = configureStore({
     middleware: getDefaultMiddleware =>
@@ -7,6 +8,7 @@ export const store = configureStore({
       serializableCheck: false,
     }),
     reducer: {
-    auth: authSlice.reducer,
+        auth: authSlice.reducer,
+        jurnal: jurnalSlice.reducer,
     },
 })

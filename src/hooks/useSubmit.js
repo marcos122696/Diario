@@ -5,6 +5,8 @@ import {
 } 
 from "../store/index";
 
+// Esto deberia ser un "helper".
+// This should be a "helper".
 
 export const useSubmit = () => {
 

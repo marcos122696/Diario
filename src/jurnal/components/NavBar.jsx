@@ -43,7 +43,7 @@ export const NavBar = ({ drowerWidth = 240 }) => {
                     noWrap
                     component='div'
                 >
-                    JurnalApp</Typography>
+                    Tu Diario</Typography>
 
                 <IconButton 
                     color="error"

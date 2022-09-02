@@ -7,6 +7,10 @@ import { Google, Facebook, Twitter } from '@mui/icons-material'; /* Facebook, Tw
 import { useForm, useSubmit } from '../../hooks';
 import { AuthLayout } from '../index';
 
+const formData = {
+    email: '',
+    password: ''
+};
 
 export const LoginPage = () => {
 
@@ -14,10 +18,7 @@ export const LoginPage = () => {
 
     const { onSubmit, onGoogleSignIn, onFacebookSignIn, onTwitterSignIn } = useSubmit();
 
-    const { email, password, onInputChange } = useForm({
-        email: '',
-        password: ''
-    });
+    const { email, password, onInputChange } = useForm( formData );
 
     const isAuthenticating = useMemo( () => status === 'checking', [ status ] );
 

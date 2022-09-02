@@ -1,10 +1,23 @@
+import { useSelector } from "react-redux";
 import { SaveOutlined } from "@mui/icons-material";
 import { Button, Grid, Typography, TextField } from "@mui/material";
+
+import { useForm } from "../../hooks/useForm";
 import { ImageGallery } from "../index";
+import { useMemo } from "react";
 
 
 
 export const NoteView = () => {
+
+    const { active } = useSelector( state => state.jurnal );
+    const { title, body, date, onInputChange } = useForm( active );
+
+    const dateString = useMemo(() => {
+        const currentDate = new Date( date );
+        return currentDate.toUTCString();
+    }, [ date ]);
+
   return (
     <Grid
         container
@@ -14,7 +27,11 @@ export const NoteView = () => {
         sx={{ mb: 1 }}
     >
         <Grid item>
-            <Typography fontSize={ 39 } fontWeight='light' >28 de agosto, 2023</Typography>
+            <Typography 
+            fontSize={ 39 } 
+            fontWeight='light' 
+        >
+            { dateString }</Typography>
         </Grid>
         <Grid item>
             <Button sx={{ padding: 2, color: 'white'}}>
@@ -27,19 +44,25 @@ export const NoteView = () => {
             <TextField 
                 type="text"
                 variant="filled"
-                fullWidth
-                placeholder="Ingrese un título"
                 label="Título"
-                sx={{ border: 'none', mb: 1 }}
+                fullWidth
+                name="title"
+                onChange={ onInputChange }
+                value={ title }
+                sx={{ border: 'none', mb: 1, backgroundColor: 'white' }}
             />
 
             <TextField 
                 type="text"
                 variant="filled"
+                label="Descripcion"
                 fullWidth
                 multiline
-                placeholder="¿Qué sucedió en el día de hoy?"
+                name="body"
+                onChange={ onInputChange }
+                value={ body }
                 minRows={ 5 }
+                sx={{ backgroundColor: 'white' }}
             />
         </Grid>
 
