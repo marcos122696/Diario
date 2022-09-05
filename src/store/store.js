@@ -1,5 +1,5 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { authSlice } from './index';
+import { authSlice, uiSlice } from './index';
 import { jurnalSlice } from './jurnal/jurnalSlice';
 
 export const store = configureStore({
@@ -10,5 +10,6 @@ export const store = configureStore({
     reducer: {
         auth: authSlice.reducer,
         jurnal: jurnalSlice.reducer,
+        ui: uiSlice.reducer,
     },
 })

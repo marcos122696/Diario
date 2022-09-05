@@ -1,14 +1,23 @@
-import { useSelector } from "react-redux";
-import { Box, Drawer, Toolbar, Typography, Divider, List } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+import { Box, Drawer, Toolbar, Typography, Divider, List, IconButton } from "@mui/material";
+import { MenuOutlined } from "@mui/icons-material";
 
 import { SideBarItem } from "../index";
+import { closeSidebar } from "../../store/index";
 
 
 
 export const SideBar = ({ drowerWidth = 240 }) => {
     
+    const dispatch = useDispatch();
     const { displayName } = useSelector( state => state.auth );
     const { notes } = useSelector( state => state.jurnal );
+    const { isOpen } = useSelector( state => state.ui );
+    
+    const onCloseSidebar = () => {
+        dispatch( closeSidebar());
+    };
+
     const resolution = window.screen.width;
 
   return (
@@ -17,8 +26,8 @@ export const SideBar = ({ drowerWidth = 240 }) => {
         sx={{ width: { sm: drowerWidth, flexShrink: { sm: 0 }, }, }}
     >
         <Drawer
-            variant={ resolution > 600 ? "permanent" : "temporary" } 
-            open={ resolution < 600 ? false : true } 
+            variant={ isOpen ? "permanent" : "temporary" } 
+            open={ isOpen } 
             sx={{
                 display: { xs: 'block' },
                 '& .MuiDrawer-paper': { 
@@ -33,6 +42,7 @@ export const SideBar = ({ drowerWidth = 240 }) => {
                 className="bar"
                 sx={{
                     backgroundColor:'#333',
+                    justifyContent: 'space-between'
                 }}
             >
                 <Typography
@@ -43,6 +53,14 @@ export const SideBar = ({ drowerWidth = 240 }) => {
                 >
                     { displayName }
                 </Typography>
+
+                <IconButton
+                onClick={ onCloseSidebar }
+                display={ isOpen ? "" : "none"}
+                sx={{color: 'white', justifyContent: "center"}}
+            >
+                <MenuOutlined />
+            </IconButton>
 
             </Toolbar>
             <Divider sx={{ backgroundColor:'primary.main' }}/>

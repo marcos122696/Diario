@@ -8,6 +8,7 @@ import { Grid,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { setActiveNote } from "../../store/jurnal/jurnalSlice";
+import { closeSidebar } from "../../store/index";
 
 
 
@@ -23,6 +24,7 @@ export const SideBarItem = ({ title = '', body, date, imageUrls = [], id }) => {
 
     const onActiveNote = () => {
         dispatch(setActiveNote({ title, body, date, imageUrls, id })); 
+        dispatch(closeSidebar());
     };
 
   return (
