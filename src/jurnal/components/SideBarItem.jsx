@@ -11,8 +11,8 @@ import { setActiveNote } from "../../store/jurnal/jurnalSlice";
 
 
 
-export const SideBarItem = ({ title = '', body, date, imageUrls = [] }) => {
-    
+export const SideBarItem = ({ title = '', body, date, imageUrls = [], id }) => {
+    // console.log(id);
     const dispatch = useDispatch();
     
     const newTitle = useMemo(() => {
@@ -22,7 +22,7 @@ export const SideBarItem = ({ title = '', body, date, imageUrls = [] }) => {
     }, [ title ]);
 
     const onActiveNote = () => {
-        dispatch(setActiveNote({ title, body, date, date, imageUrls })); 
+        dispatch(setActiveNote({ title, body, date, imageUrls, id })); 
     };
 
   return (
