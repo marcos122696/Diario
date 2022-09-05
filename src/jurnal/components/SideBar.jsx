@@ -6,6 +6,8 @@ import { SideBarItem } from "../index";
 import { closeSidebar } from "../../store/index";
 
 
+const resolution = window.screen.width;
+const isSee = resolution > 600 ? "none" : "";
 
 export const SideBar = ({ drowerWidth = 240 }) => {
     
@@ -17,8 +19,7 @@ export const SideBar = ({ drowerWidth = 240 }) => {
     const onCloseSidebar = () => {
         dispatch( closeSidebar());
     };
-
-    const resolution = window.screen.width;
+    
 
   return (
     <Box
@@ -26,7 +27,7 @@ export const SideBar = ({ drowerWidth = 240 }) => {
         sx={{ width: { sm: drowerWidth, flexShrink: { sm: 0 }, }, }}
     >
         <Drawer
-            variant={ isOpen ? "permanent" : "temporary" } 
+            variant={ resolution > 600 ? "permanent" : "temporary" } 
             open={ isOpen } 
             sx={{
                 display: { xs: 'block' },
@@ -55,12 +56,16 @@ export const SideBar = ({ drowerWidth = 240 }) => {
                 </Typography>
 
                 <IconButton
-                onClick={ onCloseSidebar }
-                display={ isOpen ? "" : "none"}
-                sx={{color: 'white', justifyContent: "center"}}
-            >
-                <MenuOutlined />
-            </IconButton>
+                    onClick={ onCloseSidebar }
+                    // display={ resolution > 600 ? "none" : "" }
+                    sx={{
+                        color: 'white', 
+                        justifyContent: "center",
+                        display: `${isSee}`
+                    }}
+                >
+                    <MenuOutlined />
+                </IconButton>
 
             </Toolbar>
             <Divider sx={{ backgroundColor:'primary.main' }}/>
