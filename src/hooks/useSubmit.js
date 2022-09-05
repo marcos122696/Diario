@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import Swal from "sweetalert2";
 import { 
     startGoogleSignIn, 
     startLoginWithEmailPassword, 
@@ -25,12 +26,20 @@ export const useSubmit = () => {
 
     const onFacebookSignIn = ( event ) => {
         // dispatch( startFacebookSignIn() );
-        return alert('en mantenimiento');
+        return Swal.fire(
+            'Ups!!!',
+            'Esta Funcion Aùn no esta disponible.',
+            'warning'
+        )
     };
 
     const onTwitterSignIn = ( event ) => {
         // dispatch( startTwitterSignIn() );
-        return alert('en mantenimiento');
+        return Swal.fire(
+            'Ups!!!',
+            'Esta Funcion Aùn no esta disponible.',
+            'warning'
+        )
     };
 
 
