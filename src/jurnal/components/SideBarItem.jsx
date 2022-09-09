@@ -30,13 +30,13 @@ export const SideBarItem = ({ title = '', body, date, imageUrls = [], id }) => {
   return (
     <ListItem disablePadding>
         <ListItemButton onClick={ onActiveNote }>
-            <ListItemIcon>
+            <ListItemIcon sx={{ color: 'white'}}>
                 <TurnedInNot />
             </ListItemIcon>
 
-            <Grid container display="flex" flexDirection="column"> 
-                <ListItemText primary={ newTitle }/>
-                <ListItemText secondary={ body } />
+            <Grid container display="flex" flexDirection="column" sx={{ color: 'white'}}> 
+                <ListItemText primary={ newTitle } />
+                <ListItemText secondary={ body } color="secondary"/>
             </Grid>
         </ListItemButton>
     </ListItem>
