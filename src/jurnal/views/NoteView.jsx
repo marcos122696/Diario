@@ -62,14 +62,14 @@ export const NoteView = () => {
         justifyContent="space-between"
         sx={{ mb: 1 }}
     >
-        <Grid item>
+        <Grid item xs={ 12 }>
             <Typography 
             fontSize={ 39 } 
             fontWeight='light' 
         >
             { hour }, {newDay}day {dayNumber} {month} <b>{year}</b></Typography>
         </Grid>
-        <Grid item>
+        <Grid item xs={ 12 } justifyContent="center" alignItems="center">
 
             <input 
                 type="file" 
@@ -79,6 +79,7 @@ export const NoteView = () => {
                 style={{ display: 'none' }}
             />
 
+        
             <IconButton
                 sx={{ backgroundColor: "white" }}
                 disabled={ isSaving }
