@@ -23,7 +23,8 @@ export const startNewNote = () => {
         const newNote = {
             title: '',
             body: '',
-            date: new Date().getTime()
+            date: new Date().getTime(),
+            imageUrls: [],
         };
 
         const newDoc = doc( collection( FirebaseDB, `${uid}/jurnal/notes` ) );
@@ -33,7 +34,7 @@ export const startNewNote = () => {
         // console.log(newNote);
 
         dispatch( addNewEmptyNote(newNote) );
-        dispatch( setActiveNote(newNote) );
+        dispatch( setActiveNote( newNote ) );
     }
 };
 

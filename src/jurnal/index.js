@@ -1,6 +1,4 @@
-
-
-
+export * from './components/ButtonUploadImage';
 export * from './components/ImageGallery';
 export * from './components/NavBar';
 export * from './components/SideBar';

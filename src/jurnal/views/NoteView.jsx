@@ -1,21 +1,20 @@
-import { useMemo, useEffect, useRef } from "react";
+import { useMemo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { SaveOutlined, UploadOutlined, DeleteOutline } from "@mui/icons-material";
-import { Button, Grid, Typography, IconButton, TextField } from "@mui/material";
+import { SaveOutlined, DeleteOutline } from "@mui/icons-material";
+import { Button, Grid, Typography, TextField } from "@mui/material";
 import Swal from "sweetalert2";
 import 'sweetalert2/dist/sweetalert2.css';
 
-import { useForm } from "../../hooks/useForm";
-import { ImageGallery } from "../index";
-import { setActiveNote, startDeletingNote, startSaveNotes, startUploadingFiles } from "../../store/index";
-import { orderDate } from "../../helpers/orderDate";
+import { ButtonUploadImage, ImageGallery } from "../";
+import { setActiveNote, startDeletingNote, startSaveNotes } from "../../store";
+import { useForm } from "../../hooks";
+import { orderDate } from "../../helpers";
 
 
 export const NoteView = () => {
 
     const dispatch = useDispatch();
-    const fileInputRef = useRef();
     const { active, messageSaved, isSaving } = useSelector( state => state.jurnal );
     const { title, body, date, onInputChange, formState } = useForm( active );
 
@@ -24,7 +23,7 @@ export const NoteView = () => {
         return currentDate.toUTCString();
     }, [ date ]);
 
-    const {newDay, dayNumber, month, year, hour} = orderDate(dateString);
+    const {newDay, dayNumber, month, year, /* hour */} = orderDate(dateString);
 
     useEffect(() => {
         dispatch( setActiveNote(formState) );
@@ -44,12 +43,6 @@ export const NoteView = () => {
         dispatch( startSaveNotes() );
     };
 
-    const onFileInputChange = ({ target }) => {
-        if ( target.files === 0 ) return;
-        
-        dispatch( startUploadingFiles(target.files) );
-    };
-
     const onDelete = () => {
         dispatch( startDeletingNote() );
     };
@@ -60,33 +53,39 @@ export const NoteView = () => {
         direction="row"
         alignItems="center"
         justifyContent="space-between"
+        // sx={{ mb: 1, height: 'calc( 100vh - 56px )' }}
+        // sx={{ mb: 1, height: '100vh' }}
         sx={{ mb: 1 }}
-    >
-        <Grid item xs={ 12 }>
+    >   
+
+        <Grid 
+            item 
+            xs={ 12 }
+            sx={{ 
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center'
+            }}
+        >
             <Typography 
             fontSize={ 39 } 
             fontWeight='light' 
         >
-            { hour }, {newDay}day {dayNumber} {month} <b>{year}</b></Typography>
+            {/* { hour }, */} {newDay}day {dayNumber} {month} <b>{year}</b></Typography>
         </Grid>
-        <Grid item xs={ 12 } justifyContent="center" alignItems="center">
+        <Grid 
+            item 
+            xs={ 12 } 
+            justifyContent="center" 
+            alignItems="center"
+            sx={{ 
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between'
+            }}
+        >
 
-            <input 
-                type="file" 
-                multiple
-                ref={ fileInputRef }
-                onChange={ onFileInputChange }
-                style={{ display: 'none' }}
-            />
-
-        
-            <IconButton
-                sx={{ backgroundColor: "white" }}
-                disabled={ isSaving }
-                onClick={ () => fileInputRef.current.click() }
-            >
-                <UploadOutlined />
-            </IconButton>
+        <ButtonUploadImage />
 
             <Button 
                 disabled={ isSaving }
@@ -97,6 +96,7 @@ export const NoteView = () => {
                 Guardar
             </Button>
         </Grid>
+        
 
         <Grid container>
             <TextField 
