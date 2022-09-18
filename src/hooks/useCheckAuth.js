@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
 
-import { FirebaseAuth } from '../firebase/config';
+import { FirebaseAuth } from '../firebase';
 import { useAuthStore, useJurnalStore } from './';
 
 
