@@ -1,9 +1,9 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 
-import { AuthRoutes } from '../auth/index';
-import { JurnalRoutes } from '../jurnal/index';
-import { CheckingAuth } from '../ui/index';
-import { useCheckAuth } from '../hooks/useCheckAuth';
+import { AuthRoutes } from '../auth';
+import { JurnalRoutes } from '../jurnal';
+import { CheckingAuth } from '../ui';
+import { useCheckAuth } from '../hooks';
 
 export const AppRouter = () => {
 

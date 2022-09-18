@@ -1,10 +1,7 @@
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
-import { 
-    startGoogleSignIn, 
-    startLoginWithEmailPassword, 
-} 
-from "../store/index";
+
+import { useAuthStore } from "./useAuthStore";
 
 // Esto deberia ser un "helper".
 // This should be a "helper".
@@ -12,6 +9,7 @@ from "../store/index";
 export const useSubmit = () => {
 
     const dispatch = useDispatch();
+    const { startGoogleSignIn, startLoginWithEmailPassword } = useAuthStore();
     
     const onSubmit = ( event, { email, password } ) => {
         event.preventDefault();

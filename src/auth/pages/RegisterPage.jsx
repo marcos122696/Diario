@@ -4,8 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Button, Grid, Link, Typography, TextField, Alert } from '@mui/material';
 
 import { AuthLayout } from '../index';
-import { useForm} from '../../hooks';
-import { startCreatingUserWithEmailPassword } from '../../store/index';
+import { useForm, useAuthStore } from '../../hooks';
 
 const formData = {
     email: '',
@@ -23,6 +22,7 @@ export const RegisterPage = () => {
 
     const dispatch = useDispatch();
     const [formSubmitted, setFormSubmitted] = useState(false);
+    const { startCreatingUserWithEmailPassword } = useAuthStore();
 
     const { status, errorMessage } = useSelector( state => state.auth );
     const isAuthenticating = useMemo( () => status === 'checking', [ status ] );
