@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
+
 import { Button, Grid, Link, Typography, TextField, Alert } from '@mui/material';
 
 import { AuthLayout } from '../index';
@@ -17,6 +18,7 @@ const formValidations = {
     password: [ (value) => value.length >= 6, 'La contraseña debe de tener mas de 6 letras' ],
     displayName: [ (value) => value.length >= 1, 'El nombre es requerido' ],
 };
+
 
 export const RegisterPage = () => {
 

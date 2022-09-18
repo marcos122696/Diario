@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import { useMemo } from "react";
 import { Box, Drawer, Toolbar, Typography, Divider, List, IconButton } from "@mui/material";
 import { MenuOutlined } from "@mui/icons-material";
 
@@ -15,6 +16,7 @@ export const SideBar = ({ drowerWidth = 240 }) => {
     const { displayName } = useSelector( state => state.auth );
     const { notes } = useSelector( state => state.jurnal );
     const { isOpen } = useSelector( state => state.ui );
+
     
     const onCloseSidebar = () => {
         dispatch( closeSidebar());

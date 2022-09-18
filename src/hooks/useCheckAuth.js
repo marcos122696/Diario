@@ -3,13 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
 
 import { FirebaseAuth } from '../firebase/config';
-import { login, logout, startLoadingNotes } from '../store/index';
+import { useAuthStore, useJurnalStore } from './';
 
 
 export const useCheckAuth = () => {
 
-    const { status } = useSelector( state => state.auth );
     const dispatch = useDispatch();
+    const { startLoadingNotes } = useJurnalStore();
+    const { login, logout, status } = useAuthStore();
 
     useEffect(() => {
         onAuthStateChanged( FirebaseAuth, async( user ) => {

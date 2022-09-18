@@ -1,13 +1,16 @@
+import { useSelector } from "react-redux";
 import { 
     loginWhitEmailPassword, 
     logoutFirebase, 
     registerUserWithEmailPassword, 
     signInWithGoogle 
-} from "../firebase/providers";
-import { chackingCredentials, login, logout, clearNotesLogout } from "../store";
+} from "../firebase";
+import { chackingCredentials, login, logout, clearNotesLogout } from '../store';
 
 
 export const useAuthStore = () => {
+
+    const { status } = useSelector( state => state.auth );
 
     const chekingAuthentication = ( email, password ) => {
         return async ( dispatch ) => {
@@ -80,12 +83,21 @@ export const useAuthStore = () => {
     };
 
     return {
+        //* Propierties:
+        status,
+        
+        //* Method:
         chekingAuthentication,
-        startGoogleSignIn,
         startCreatingUserWithEmailPassword,
+        startFacebookSignIn,
+        startGoogleSignIn,
         startLoginWithEmailPassword,
         startLogout,
-        startFacebookSignIn,
         startTwitterSignIn,
+
+        //* Reducer:
+        chackingCredentials,
+        login,
+        logout,
     };
 }
