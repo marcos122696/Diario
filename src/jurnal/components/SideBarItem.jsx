@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useDispatch } from "react-redux";
 import { TurnedInNot } from "@mui/icons-material"
 import { Grid, 
     ListItem, 
@@ -6,15 +7,15 @@ import { Grid,
     ListItemIcon, 
     ListItemText 
 } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { setActiveNote } from "../../store/jurnal/jurnalSlice";
-import { closeSidebar } from "../../store/index";
 
+import { closeSidebar } from "../../store/index";
+import { useJurnalStore } from "../../hooks";
 
 
 export const SideBarItem = ({ title = '', body, date, imageUrls = [], id }) => {
     // console.log(id);
     const dispatch = useDispatch();
+    const { setActiveNote } = useJurnalStore();
     
     const newTitle = useMemo(() => {
         return title.length > 17 

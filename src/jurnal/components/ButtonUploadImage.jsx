@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { IconButton } from "@mui/material";
 import { UploadOutlined } from "@mui/icons-material";
 
-import { startUploadingFiles } from "../../store";
+import { useJurnalStore } from "../../hooks";
 
 
 export const ButtonUploadImage = () => {
@@ -11,6 +11,7 @@ export const ButtonUploadImage = () => {
     const fileInputRef = useRef();
     const dispatch = useDispatch();
     const { isSaving } = useSelector( state => state.jurnal );
+    const { startUploadingFiles } = useJurnalStore();
 
     const onFileInputChange = ({ target }) => {
         if ( target.files === 0 ) return;

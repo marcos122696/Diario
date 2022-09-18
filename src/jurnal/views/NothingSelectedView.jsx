@@ -1,6 +1,5 @@
-import { StarOutlined } from "@mui/icons-material";
 import { Grid, Typography } from "@mui/material";
-
+import { StarOutlined } from "@mui/icons-material";
 
 
 export const NothingSelectedView = () => {

@@ -1,15 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { IconButton } from '@mui/material';
 import { AddOutlined } from '@mui/icons-material';
-import { JurnalLayout, NoteView, NothingSelectedView } from '../index';
-import { startNewNote } from '../../store/index';
 
+import { JurnalLayout, NoteView, NothingSelectedView } from '../';
+import { useJurnalStore } from '../../hooks';
 
 
 export const JurnalPage = () => {
 
     const dispatch = useDispatch();
     const { isSaving, active } = useSelector( state => state.jurnal );
+    const { startNewNote } = useJurnalStore();
 
     const onClickNewNote = () => {
         dispatch(startNewNote())

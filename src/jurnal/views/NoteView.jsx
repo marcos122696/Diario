@@ -7,8 +7,7 @@ import Swal from "sweetalert2";
 import 'sweetalert2/dist/sweetalert2.css';
 
 import { ButtonUploadImage, ImageGallery } from "../";
-import { setActiveNote, startDeletingNote, startSaveNotes } from "../../store";
-import { useForm } from "../../hooks";
+import { useForm, useJurnalStore } from "../../hooks";
 import { orderDate } from "../../helpers";
 
 
@@ -17,6 +16,7 @@ export const NoteView = () => {
     const dispatch = useDispatch();
     const { active, messageSaved, isSaving } = useSelector( state => state.jurnal );
     const { title, body, date, onInputChange, formState } = useForm( active );
+    const { setActiveNote, startDeletingNote, startSaveNotes } = useJurnalStore();
 
     const dateString = useMemo(() => {
         const currentDate = new Date( date );

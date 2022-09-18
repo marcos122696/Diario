@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Box, Drawer, Toolbar, Typography, Divider, List, IconButton } from "@mui/material";
 import { MenuOutlined } from "@mui/icons-material";
 
-import { SideBarItem } from "../index";
+import { SideBarItem } from "../";
 import { closeSidebar } from "../../store/index";
 
 
