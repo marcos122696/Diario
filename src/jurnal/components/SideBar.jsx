@@ -4,7 +4,7 @@ import { Box, Drawer, Toolbar, Typography, Divider, List, IconButton } from "@mu
 import { MenuOutlined } from "@mui/icons-material";
 
 import { SideBarItem } from "../";
-import { closeSidebar } from "../../store/index";
+import { useUiStore, useAuthStore, useJurnalStore } from "../../hooks";
 
 
 const resolution = window.screen.width;
@@ -13,9 +13,9 @@ const isSee = resolution > 600 ? "none" : "";
 export const SideBar = ({ drowerWidth = 240 }) => {
     
     const dispatch = useDispatch();
-    const { displayName } = useSelector( state => state.auth );
-    const { notes } = useSelector( state => state.jurnal );
-    const { isOpen } = useSelector( state => state.ui );
+    const { closeSidebar, isOpen } = useUiStore();
+    const { displayName } = useAuthStore();
+    const { notes } = useJurnalStore();
 
     
     const onCloseSidebar = () => {

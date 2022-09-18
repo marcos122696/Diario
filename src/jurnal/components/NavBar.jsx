@@ -2,14 +2,14 @@ import { useDispatch } from 'react-redux';
 import { MenuOutlined, LogoutOutlined } from "@mui/icons-material";
 import { AppBar, IconButton, Toolbar, Grid, Typography } from "@mui/material";
 
-import { openSidebar } from '../../store/index';
-import { useAuthStore } from '../../hooks';
+import { useAuthStore, useUiStore } from '../../hooks';
 
 
 export const NavBar = ({ drowerWidth = 240 }) => {
 
     const dispatch = useDispatch();
     const { startLogout } = useAuthStore();
+    const { openSidebar } = useUiStore();
 
     const onOpenSidevar = () => {
         dispatch(openSidebar());

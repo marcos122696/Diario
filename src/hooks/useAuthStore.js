@@ -10,7 +10,7 @@ import { chackingCredentials, login, logout, clearNotesLogout } from '../store';
 
 export const useAuthStore = () => {
 
-    const { status } = useSelector( state => state.auth );
+    const { status, uid, email, displayName, photoURL, errorMessage } = useSelector( state => state.auth );
 
     const chekingAuthentication = ( email, password ) => {
         return async ( dispatch ) => {
@@ -85,6 +85,11 @@ export const useAuthStore = () => {
     return {
         //* Propierties:
         status,
+        uid,
+        email,
+        displayName,
+        photoURL,
+        errorMessage,
         
         //* Method:
         chekingAuthentication,

@@ -1,5 +1,5 @@
-import { collection, doc, setDoc, deleteDoc } from 'firebase/firestore/lite';
 import { useSelector } from 'react-redux';
+import { collection, doc, setDoc, deleteDoc } from 'firebase/firestore/lite';
 
 import { FirebaseDB } from "../firebase";
 import { fileUpload, loadNotes } from '../helpers';
@@ -15,6 +15,7 @@ import { addNewEmptyNote,
 
 export const useJurnalStore = () => {
 
+    const { isSaving, messageSaved, notes, active } = useSelector( state => state.jurnal );
 
     const startNewNote = () => {
         return async( dispatch, getState ) => {
@@ -105,14 +106,10 @@ export const useJurnalStore = () => {
 
     return {
         //* Properties:
-        addNewEmptyNote,
-        deleteNoteById,
-        savingNewNote,
-        setActiveNote,
-        setNotes,
-        setPhotosToActiveNote,
-        setSaving,
-        updateNote,
+        isSaving,
+        messageSaved,
+        notes,
+        active,
 
         //* Methods:
         setActiveNote,
@@ -121,5 +118,15 @@ export const useJurnalStore = () => {
         startNewNote,
         startSaveNotes,
         startUploadingFiles,
+
+        //* Reducer:
+        addNewEmptyNote,
+        deleteNoteById,
+        savingNewNote,
+        setActiveNote,
+        setNotes,
+        setPhotosToActiveNote,
+        setSaving,
+        updateNote,
     };
 }

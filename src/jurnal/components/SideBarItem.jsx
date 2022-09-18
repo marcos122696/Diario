@@ -8,14 +8,14 @@ import { Grid,
     ListItemText 
 } from "@mui/material";
 
-import { closeSidebar } from "../../store/index";
-import { useJurnalStore } from "../../hooks";
+import { useJurnalStore, useUiStore } from "../../hooks";
 
 
 export const SideBarItem = ({ title = '', body, date, imageUrls = [], id }) => {
     // console.log(id);
     const dispatch = useDispatch();
     const { setActiveNote } = useJurnalStore();
+    const { closeSidebar } = useUiStore();
     
     const newTitle = useMemo(() => {
         return title.length > 17 
