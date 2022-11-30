@@ -13,7 +13,7 @@ const isSee = resolution > 600 ? "none" : "";
 export const SideBar = ({ drowerWidth = 240 }) => {
     
     const dispatch = useDispatch();
-    const { closeSidebar, isOpen } = useUiStore();
+    const { closeSidebar, isOpen, /* nameCapitalize  */} = useUiStore();
     const { displayName } = useAuthStore();
     const { notes } = useJurnalStore();
 

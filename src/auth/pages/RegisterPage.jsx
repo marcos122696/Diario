@@ -24,9 +24,8 @@ export const RegisterPage = () => {
 
     const dispatch = useDispatch();
     const [formSubmitted, setFormSubmitted] = useState(false);
-    const { startCreatingUserWithEmailPassword } = useAuthStore();
+    const { startCreatingUserWithEmailPassword, status, errorMessage } = useAuthStore();
 
-    const { status, errorMessage } = useSelector( state => state.auth );
     const isAuthenticating = useMemo( () => status === 'checking', [ status ] );
 
     const { displayName, email, password, onInputChange, formState,
